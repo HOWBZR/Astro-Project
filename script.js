@@ -8,6 +8,27 @@ $(document).ready(function () {
         url: queryURL,
         method: 'GET'
     }).then(function (response) {
+<<<<<<< HEAD
+        // console.log(response)
+    })
+
+});
+
+
+        $(function () {
+            $('input[name="birthday"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minYear: 1901,
+                maxYear: parseInt(moment().format('YYYY'), 10)
+            }, function (start, end, label) {
+                let formatedDate = $("#date").val()
+                var years = moment(formatedDate).format("YYYY-MM-DD");
+                console.log(years);
+                // alert("You are " + years + " years old!");
+            });
+        });
+=======
         console.log(response)
         let lat = response.latitude
         let long = response.longitude
@@ -49,3 +70,4 @@ $(document).ready(function () {
 
 
 });
+>>>>>>> cc2b0ae21e8206e76a7b615e7043295e23b382f8
