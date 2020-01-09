@@ -6008,8 +6008,8 @@ $('document').ready(function () {
         for (let i = 0; i < newCity.length; i++) {
             let option2 = $('<option></option>')
             option2.text(newCity[i])
-            console.log(option2)
-            console.log(newCity[i])
+            // console.log(option2)
+            // console.log(newCity[i])
             $('#city').append(option2)
         }
     }
