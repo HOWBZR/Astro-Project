@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+
+    <script type="text/javascript" src="scripted.js"></script>
+    <script type="text/javascript" src="locations.js"></script>
+    <script type="text/javascript" src="test.js"></script>
+    <title>Trail Finder</title>
+</head>
+
+
+<header>
+    <div class="container-fluid text-center border-center">
+        <h1>Find a Hiking Trail Near You</h1>
+    </div>
+</header>
+
+
+<body>
+
+    <div id="main" class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 mt-3 h-100">
+
+                <div id="jumbo" class="jumbotron jumbotron-fluid text-center">
+                    <form class="form-group">
+                        <label for="citySearch">
+                            <h4>Where are you headed?</h4>
+                        </label>
+                        <div class="form-row">
+                            <div class='col-4 offset-4'>
+                                <select class='form-control col-6 offset-4' id='state'>
+                                    <option id='state'>State</option>
+                                </select>
+                                <select class='form-control col-6 offset-4' id='city'>
+                                    <option>City</option>
+                                </select>
+                            </div>
+                        </div><br>
+                        <p>OR</p>
+                        <input type="checkbox" id="currentLocation">Use My Current Location</input><br><br>
+
+
+                    </form>
+                    <button id="myBtn">Find a Trail!</button>
+
+
+
+                </div>
+                <div id="results" class="jumbotron jumbotron-fluid text-center d-none">
+
+
+                    
+                    <p id='sunrise'></p>
+                    <p id='sunset'></p>
+                    <p id='temp'></p>
+                    <p id='id'></p>
+                    <p id='name'></p>
+                    <p id='location'></p>
+                    <p id='summary'></p>
+                    <p id='stars'></p>
+                    <p id='img'> <img src='' /></p>
+                    <button id="return">Search Again</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    
+
+
+    <footer>
+        <div class="container-fluid text-center border-center" style=color:white;>
+            &copy;Copyright 2020
+    </footer>
+</body>
+
+
+</html>
