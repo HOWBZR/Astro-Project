@@ -23,24 +23,25 @@
 
     <script type="text/javascript" src="scripted.js"></script>
     <script type="text/javascript" src="locations.js"></script>
-
-    <title>Astro App</title>
+    <script type="text/javascript" src="test.js"></script>
+    <title>Trail Finder</title>
 </head>
 
 
 <header>
     <div class="container-fluid text-center border-center">
-        <h1>Astro App</h1>
+        <h1>Find a Hiking Trail Near You</h1>
     </div>
 </header>
 
 
 <body>
-    <div class="container-fluid">
+
+    <div id="main" class="container-fluid">
         <div class="row">
             <div class="col-md-12 mt-3 h-100">
 
-                <div class="jumbotron jumbotron-fluid text-center">
+                <div id="jumbo" class="jumbotron jumbotron-fluid text-center">
                     <form class="form-group">
                         <label for="citySearch">
                             <h4>Where are you headed?</h4>
@@ -101,15 +102,40 @@
     </div>
 
 
+                    </form>
+                    <button id="myBtn">Find a Trail!</button>
 
 
 
+                </div>
+                <div id="results" class="jumbotron jumbotron-fluid text-center d-none">
 
 
+                    
+                    <p id='sunrise'></p>
+                    <p id='sunset'></p>
+                    <p id='temp'></p>
+                    <p id='id'></p>
+                    <p id='name'></p>
+                    <p id='location'></p>
+                    <p id='summary'></p>
+                    <p id='stars'></p>
+                    <p id='img'> <img src='' /></p>
+                    <button id="return">Search Again</button>
+                </div>
 
 
+            </div>
+        </div>
+    </div>
+    
 
 
+    <footer>
+        <div class="container-fluid text-center border-center" style=color:white;>
+            &copy;Copyright 2020
+    </footer>
 </body>
+
 
 </html>
