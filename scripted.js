@@ -53,6 +53,48 @@ $(document).ready(function () {
 
     //END OF OPEN WEATHER API
 
+    const hikingProjectQueryURL = 'https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200665127-cd8866c72fae5750433f139006ec5b11'
+    $.ajax({
+        url: hikingProjectQueryURL,
+        method: 'GET'
+    }).then(function (response) {
+
+        console.log(response.trails[0].name)
+        console.log(response.trails[0].stars)
+        console.log(response.trails[0].location)
+        console.log(response.trails[0].imgMedium)
+        console.log(response.trails[0].summary)
+
+
+        // const name = $("#name").text(response.trails[0].name);
+        // const stars = $("#stars").text(response.trails[0].stars);
+        // const location = $("#location").text(response.trails[0].location);
+        // const imgMedium = $("#img").attr("src", response.trails[0].imgMedium);
+        // const summary = $("#summary").text(response.trails[0].summary);
+
+        for (let i = 0; i < response.trails.length; i++) {
+            let currentTrail = response.trails[i];
+            let trailPopulator = "<div>";
+
+            trailPopulator += "<p>" + currentTrail.name + "</p>";
+            trailPopulator += "<p>" + currentTrail.stars + "</p>";
+            trailPopulator += "<p>" + currentTrail.location + "</p>";
+            trailPopulator += "<img src='" + currentTrail.imgMedium + "'>";
+            trailPopulator += "<p>" + currentTrail.summary + "</p>";
+            
+            trailPopulator += "</div>"
+
+            $("#trailHolder").append(trailPopulator);
+            
+            console.log(trailPopulator);
+
+        }
+
+
+        // name.append(response.name);
+        // $("name").append(name);
+    })
+
 
 
     $(function () {
