@@ -1,59 +1,69 @@
 $(document).ready(function () {
+    let button = document.querySelector('#myBtn')
 
-    //START OF IPGEOLOCATION API
     const queryURL = 'https://api.ipgeolocation.io/ipgeo?apiKey=94eb77af22db448ca98c2a47921ae7af'
-    let city = 'Gilbert'
 
-    $.ajax({
-        url: queryURL,
-        method: 'GET'
-    }).then(function (response) {
-        console.log(response)
-        let lat = response.latitude
-        let long = response.longitude
-        const coordURL = 'https://api.ipgeolocation.io/astronomy?apiKey=94eb77af22db448ca98c2a47921ae7af&lat=' + lat + '&long=' + long
 
-        $.ajax({
-            url: coordURL,
-            method: 'GET'
-        }).then(function (response) {
-            console.log(response)
-            let sunrise = response.sunrise
-            let sunset = response.sunset
-            $('#sunrise').text('The sun will rise at ' + sunrise)
-            $('#sunset').text('The sun will set at ' + sunset)
-
-        })
-    });
-
-    //END OF IPGEOLOCATION API
-
-    //-------------------------
-
-    //START OF OPEN WEATHER API
 
     //using open weather API to input city from search field
-    const openWeatherQueryURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=79b9010c856142d3dabc51dccb05cdb8'
-    $.ajax({
-        url: openWeatherQueryURL,
-        method: 'GET'
-    }).then(function (response) {
-        let lattitude = response.coord.lat
-        let longitude = response.coord.lon
+    button.addEventListener('click', function () {
+        let cityInput = document.querySelector('#city')
+        let city = cityInput.value
+       
 
-        //using open weather API to get lat and long from the city response
-        const uvURL = 'https://api.openweathermap.org/data/2.5/uvi?appid=79b9010c856142d3dabc51dccb05cdb8&lat=' + lattitude + '&lon=' + longitude
+        const openWeatherQueryURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=79b9010c856142d3dabc51dccb05cdb8'
         $.ajax({
-            url: uvURL,
-            method: "GET"
+            url: openWeatherQueryURL,
+            method: 'GET'
         }).then(function (response) {
+            let lat = response.coord.lat
+            let long = response.coord.lon
             console.log(response)
-        });
+        
+            let temperature = Math.abs(response.main.temp - 273) * 1.8 + 32
+            let temp = temperature.toFixed(2)
+
+            if (temp < 40) {
+                $('#temp').text('Brrrrr! You better bring a jacket! It is going to be ' + temp)
+            }
+            else if (temp > 40) {
+                $('#temp').text('It is going to be a beautiful day for a hike! The temperature is perfect at ' + temp)
+            }
+
+            $.ajax({
+                url: queryURL,
+                method: 'GET'
+            }).then(function (response) {
+                
+                const coordURL = 'https://api.ipgeolocation.io/astronomy?apiKey=94eb77af22db448ca98c2a47921ae7af&lat=' + lat + '&long=' + long
+
+                $.ajax({
+                    url: coordURL,
+                    method: 'GET'
+                }).then(function (response) {
+                    let sunrise = response.sunrise
+                    let sunset = response.sunset
+                    $('#sunrise').text('The sun will rise at ' + sunrise)
+                    $('#sunset').text('The sun will set at ' + sunset)
+
+                })
+            });
+            const hikingURL = 'https://www.hikingproject.com/data/get-trails?lat='+lat+'&lon='+long+'&maxDistance=10&key=200665100-61e4fd0c54b0005acf6fd8d298e2290e'
+            $.ajax({
+                url: hikingURL,
+                method: 'GET'
+            }).then(function (response) {
+                console.log(response)
+                console.log(response.trails)
+                console.log(response.trails[0].name)
+                
+            })
+
+        })
+
 
     })
-
-
-    //END OF OPEN WEATHER API
+   
 
 
 
@@ -67,7 +77,7 @@ $(document).ready(function () {
             let formatedDate = $("#date").val()
             var years = moment(formatedDate).format("YYYY-MM-DD");
 
-            // alert("You are " + years + " years old!");
+          
         });
     });
 
