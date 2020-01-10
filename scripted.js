@@ -12,7 +12,7 @@ $(document).ready(function () {
         let lat = response.latitude
         let long = response.longitude
         const coordURL = 'https://api.ipgeolocation.io/astronomy?apiKey=94eb77af22db448ca98c2a47921ae7af&lat=' + lat + '&long=' + long
-        
+
         $.ajax({
             url: coordURL,
             method: 'GET'
@@ -27,9 +27,9 @@ $(document).ready(function () {
     });
 
     //END OF IPGEOLOCATION API
-    
+
     //-------------------------
-    
+
     //START OF OPEN WEATHER API
 
     //using open weather API to input city from search field
@@ -73,38 +73,23 @@ $(document).ready(function () {
 
 
     const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
-    
+
     for (let i = 0; i < states.length; i++) {
         let option1 = $('<option></option>')
         option1.text(states[i])
         $('#state').append(option1)
     }
 
-    //START MODAL DISPLAY
+// Buttons that switch between the input information and the results.
 
-    let modal = document.getElementById("myModal");
+    $('#myBtn').click(function () {
+        $('#jumbo').addClass("d-none");
+        $('#results').removeClass("d-none");
+    });
 
-    // Get the button that opens the modal
-    let btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    let span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+    $('#return').click(function () {
+        $('#results').addClass("d-none");
+        $('#jumbo').removeClass("d-none");
+    });
 
 });
