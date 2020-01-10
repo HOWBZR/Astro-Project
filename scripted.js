@@ -83,33 +83,23 @@ $(document).ready(function () {
 
 
     const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
+
     for (let i = 0; i < states.length; i++) {
         let option1 = $('<option></option>')
         option1.text(states[i])
         $('#state').append(option1)
     }
 
+// Buttons that switch between the input information and the results.
 
-    //START MODAL DISPLAY
+    $('#myBtn').click(function () {
+        $('#jumbo').addClass("d-none");
+        $('#results').removeClass("d-none");
+    });
 
-    let modal = document.getElementById("myModal");
-
-    let btn = document.getElementById("myBtn");
-
-    let span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
-
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+    $('#return').click(function () {
+        $('#results').addClass("d-none");
+        $('#jumbo').removeClass("d-none");
+    });
 
 });
