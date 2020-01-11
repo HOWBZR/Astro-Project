@@ -9,7 +9,7 @@ $(document).ready(function () {
     button.addEventListener('click', function () {
         let cityInput = document.querySelector('#city')
         let city = cityInput.value
-       
+
 
         const openWeatherQueryURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=79b9010c856142d3dabc51dccb05cdb8'
         $.ajax({
@@ -18,123 +18,125 @@ $(document).ready(function () {
         }).then(function (response) {
             let lat = response.coord.lat
             let long = response.coord.lon
-            console.log(response)
-        
+
+            // Temperature 
             let temperature = Math.abs(response.main.temp - 273) * 1.8 + 32
             let temp = temperature.toFixed(2)
-
             if (temp < 40) {
-                $('#temp').text('Brrrrr! You better bring a jacket! It is going to be ' + temp)
+                let tempDisplay = '<div>'
+                tempDisplay += '<p>' + 'Brrrrr! You better bring a jacket! It is going to be ' + temp + ' degrees' + '</p>'
+                tempDisplay += '</div>'
+                $('#weather').prepend(tempDisplay);
             }
             else if (temp > 40) {
-                $('#temp').text('It is going to be a beautiful day for a hike! The temperature is perfect at ' + temp)
+                let tempDisplay = '<div>'
+                tempDisplay += '<p>' + ' Its a perfect day for a hike at only ' + temp + ' degrees' + '</p>'
+                tempDisplay += '</div>'
+                $('#weather').prepend(tempDisplay);
             }
 
             $.ajax({
                 url: queryURL,
                 method: 'GET'
             }).then(function (response) {
-                
+
                 const coordURL = 'https://api.ipgeolocation.io/astronomy?apiKey=94eb77af22db448ca98c2a47921ae7af&lat=' + lat + '&long=' + long
+
 
                 $.ajax({
                     url: coordURL,
                     method: 'GET'
                 }).then(function (response) {
-                    let sunrise = response.sunrise
-                    let sunset = response.sunset
-                    $('#sunrise').text('The sun will rise at ' + sunrise)
-                    $('#sunset').text('The sun will set at ' + sunset)
+
+                    // Sunset, << NOT >> in 12hr time.
+                    let sunSet = '<div>';
+                    sunSet += "<p>" + "Sunset is at " + response.sunset + '</p>'
+                    sunSet += '</div>'
+                    $('#weather').prepend(sunSet);
 
                 })
+                $.ajax({
+                    url: coordURL,
+                    method: 'GET'
+                }).then(function (response) {
+
+                    // Sunrise, in 12hr time.
+                    let sunRise = '<div>';
+                    sunRise += "<p>" + "Sunrise is at " + response.sunrise + '</p>'
+                    sunRise += '</div>'
+                    $('#weather').prepend(sunRise);
+
+
+                })
+
             });
-            const hikingURL = 'https://www.hikingproject.com/data/get-trails?lat='+lat+'&lon='+long+'&maxDistance=10&key=200665100-61e4fd0c54b0005acf6fd8d298e2290e'
+
+            // REI API 
+            const hikingProjectQueryURL = 'https://www.hikingproject.com/data/get-trails?lat=' + lat + '&lon=' + long + '&maxDistance=10&key=200665127-cd8866c72fae5750433f139006ec5b11'
             $.ajax({
-                url: hikingURL,
+                url: hikingProjectQueryURL,
                 method: 'GET'
             }).then(function (response) {
-                console.log(response)
-                console.log(response.trails)
-                console.log(response.trails[0].name)
-                
+
+                for (let i = 0; i < 5; i++) {
+
+                    let currentTrail = response.trails[i];
+
+                    if (currentTrail !== undefined) {
+
+                        // This is a clean way to use the carousel and do an if/else kind of thing.
+                        let slideClass = i === 0 ? "carousel-item active" : "carousel-item";
+                        let trailPopulator = "<div class='" + slideClass + "'>";
+
+                        // The image being used in the carousel.
+                        // would like to find a way to keep carousel box one size and adjust images.
+                        trailPopulator += "<img class='d-block w-100' src='" + currentTrail.imgMedium + "'>";
+
+                        // the rest of the trail info populating over the image
+                        // In the div class, changing it to 'weather' puts the info below the photo
+                        trailPopulator += "<div class='carousel-caption'>";
+                        trailPopulator += "<p>" + currentTrail.name + "</p>";
+                        trailPopulator += "<p>" + currentTrail.location + "</p>";
+                        trailPopulator += "<p>" + currentTrail.summary + "</p>";
+                        trailPopulator += "<p>" + "Rating: " + currentTrail.stars + " Stars" + "</p>";
+                        trailPopulator += "</div>"
+
+                        $("#trails").append(trailPopulator);
+
+                    }
+
+                }
+                // I'm not entirely sure if this is needed or not, but I'm too scared to mess with it.
+                // Carousel took forever
+                $('.carousel').carousel();
+
             })
 
         })
 
 
     })
-   
 
-    const hikingProjectQueryURL = 'https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200665127-cd8866c72fae5750433f139006ec5b11'
-    $.ajax({
-        url: hikingProjectQueryURL,
-        method: 'GET'
-    }).then(function (response) {
+    // The states
+    const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia',
+        'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas',
+        'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
+        'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina',
+        'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico',
+        'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island',
+        'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
 
-        console.log(response.trails[0].name)
-        console.log(response.trails[0].stars)
-        console.log(response.trails[0].location)
-        console.log(response.trails[0].imgMedium)
-        console.log(response.trails[0].summary)
-
-
-        // const name = $("#name").text(response.trails[0].name);
-        // const stars = $("#stars").text(response.trails[0].stars);
-        // const location = $("#location").text(response.trails[0].location);
-        // const imgMedium = $("#img").attr("src", response.trails[0].imgMedium);
-        // const summary = $("#summary").text(response.trails[0].summary);
-
-        for (let i = 0; i < response.trails.length; i++) {
-            let currentTrail = response.trails[i];
-            let trailPopulator = "<div>";
-
-            trailPopulator += "<p>" + currentTrail.name + "</p>";
-            trailPopulator += "<p>" + currentTrail.stars + "</p>";
-            trailPopulator += "<p>" + currentTrail.location + "</p>";
-            trailPopulator += "<img src='" + currentTrail.imgMedium + "'>";
-            trailPopulator += "<p>" + currentTrail.summary + "</p>";
-            
-            trailPopulator += "</div>"
-
-            $("#trailHolder").append(trailPopulator);
-            
-            console.log(trailPopulator);
-
-        }
-
-
-        // name.append(response.name);
-        // $("name").append(name);
-    })
-
-
-
-    $(function () {
-        $('input[name="birthday"]').daterangepicker({
-            singleDatePicker: true,
-            showDropdowns: true,
-            minYear: 1901,
-            maxYear: parseInt(moment().format('YYYY'), 10)
-        }, function (start, end, label) {
-            let formatedDate = $("#date").val()
-            var years = moment(formatedDate).format("YYYY-MM-DD");
-
-          
-        });
-    });
-
-
-    const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Federated States of Micronesia', 'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
-
+    // The states loop
     for (let i = 0; i < states.length; i++) {
         let option1 = $('<option></option>')
         option1.text(states[i])
         $('#state').append(option1)
     }
 
-// Buttons that switch between the input information and the results.
-
-    $('#myBtn').click(function () {
+    // Buttons that switch between the input information and the results,
+    //  but they do not clear the user input.
+    $('#myBtn').click(function (event) {
+        event.preventDefault();
         $('#jumbo').addClass("d-none");
         $('#results').removeClass("d-none");
     });

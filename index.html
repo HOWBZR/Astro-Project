@@ -5,29 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- CSS StyleSheet -->
     <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+    <!-- Jquery CDNs -->
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+
+    <!-- Moment CDN -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+    <!-- Bootstrap Popper.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <!-- DateRangePicker CDN -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 
-
+    <!-- Javascript  -->
     <script type="text/javascript" src="scripted.js"></script>
     <script type="text/javascript" src="locations.js"></script>
-    <script type="text/javascript" src="test.js"></script>
+
     <title>Trail Finder</title>
+
 </head>
 
-
+<!-- Page Title -->
 <header>
     <div class="container-fluid text-center border-center">
         <h1>Find a Hiking Trail Near You</h1>
@@ -36,37 +57,86 @@
 
 
 <body>
-
+    <!-- Main Container -->
     <div id="main" class="container-fluid">
         <div class="row">
             <div class="col-md-12 mt-3 h-100">
 
-                <div id="jumbo" class="jumbotron jumbotron-fluid text-center">
-                    <form class="form-group">
+                <!-- Jumbotron -->
+                <div id="jumbo" class="jumbotron jumbotron-fluid text-center col-6 offset-3">
+                    <form class="form-group text-center">
+
+                        <!-- Location question. -->
                         <label for="citySearch">
                             <h4>Where are you headed?</h4>
                         </label>
+
+                        <!-- Dropdown Container -->
                         <div class="form-row">
                             <div class='col-4 offset-4'>
+
+                                <!-- Dropdown for State  -->
                                 <select class='form-control col-6 offset-4' id='state'>
                                     <option id='state'>State</option>
                                 </select>
+
+                                <!-- Dropdown for City -->
                                 <select class='form-control col-6 offset-4' id='city'>
                                     <option>City</option>
                                 </select>
                             </div>
-                        </div><br>
+                        </div>
+                        <br>
+
                         <p>OR</p>
+
+                        <!-- Current Location check box -->
                         <input type="checkbox" id="currentLocation">Use My Current Location</input><br><br>
 
-
-
+                        <!-- Find the trail Button -->
+                        <button id="myBtn">Find a Trail!</button>
 
                     </form>
 
                 </div>
 
 
+                <!-- Alternate display for jumbotron that contains the carousel -->
+                <div id="results" class="jumbotron jumbotron-fluid text-center col-6 offset-3 d-none">
+
+                    <!-- This is the div where the carousel is. -->
+                    <div id="trail-carousel" class="carousel slide" data-ride="carousel">
+                        <div id="trails" class="carousel-inner">
+
+                            <!-- The trailPopulator is appending the currentTrail data inside of here -->
+
+                        </div>
+
+                        <!-- Carousel control to move back a slide (doesn't work) -->
+                        <a class="carousel-control-prev" href="trail-carousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+
+                        <!-- Carousel control to move Forward a slide (doesn't work) -->
+                        <a class="carousel-control-next" href="trail-carousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <br>
+
+                    <!-- This is the div I'm sending the weather info/strings and the sunrise/sunset -->
+                    <div id="weather" class='col-4 offset-4'>
+
+                    </div>
+                    <br></br>
+
+                    <!-- Button that returns to the home screen, but does not clear the input.
+                         If search ran again it will duplicate results -->
+                    <button id="return">Search Again</button>
+
+                </div>
             </div>
         </div>
     </div>
@@ -74,34 +144,7 @@
 
 
 
-    </form>
-    <button id="myBtn">Find a Trail!</button>
-
-
-
-    </div>
-    <div id="results" class="jumbotron jumbotron-fluid text-center d-none">
-
-
-
-        <p id='sunrise'></p>
-        <p id='sunset'></p>
-        <p id='temp'></p>
-        <p id='name'></p>
-        <p id='location'></p>
-        <p id='summary'></p>
-        <p id='stars'></p>
-        <p id='img'> <img src='' /></p>
-        <button id="return">Search Again</button>
-    </div>
-
-
-    </div>
-    </div>
-    </div>
-
-
-
+    <!-- Footer with copyright thing -->
     <footer>
         <div class="container-fluid text-center border-center" style=color:white;>
             &copy;Copyright 2020
