@@ -50,7 +50,7 @@ $(document).ready(function () {
                     let sunRise = '<div>';
                     sunRise += "<p>" + response.sunrise + '</p>'
                     sunRise += '</div>'
-                    $('#results').append(sunRise);
+                    $('#results').prepend(sunRise);
 
 
                 })
@@ -62,18 +62,7 @@ $(document).ready(function () {
                 method: 'GET'
             }).then(function (response) {
 
-                // console.log(response.trails[0].name)
-                // console.log(response.trails[0].stars)
-                // console.log(response.trails[0].location)
-                // console.log(response.trails[0].imgMedium)
-                // console.log(response.trails[0].summary)
 
-
-                // const name = $("#name").text(response.trails[0].name);
-                // const stars = $("#stars").text(response.trails[0].stars);
-                // const location = $("#location").text(response.trails[0].location);
-                // const imgMedium = $("#img").attr("src", response.trails[0].imgMedium);
-                // const summary = $("#summary").text(response.trails[0].summary);
 
                 for (let i = 0; i < 5; i++) {
                     let currentTrail = response.trails[i];
@@ -87,7 +76,7 @@ $(document).ready(function () {
 
                     trailPopulator += "</div>"
 
-                    $("#results").append(trailPopulator);
+                    $("#results").prepend(trailPopulator);
 
                     // console.log(trailPopulator);
 
