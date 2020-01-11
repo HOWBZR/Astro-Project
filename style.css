@@ -2,25 +2,67 @@ h1 {
   text-shadow: 5px 5px 5px rgba(0,0,0,0.8);
   color:white;
 }
+
 body {
   background-image: url(http://lasportsnet.blob.core.windows.net/lsn-images/img-b4b42463-eec8-4836-9d14-c2f4f357d117.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
-  
-}
+  }
 
 .jumbotron {
+  background-image: url(https://t4.ftcdn.net/jpg/03/06/55/83/240_F_306558340_RTIScE6DUhbcxUMvWEEdi1Tio1op7j6P.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
   box-shadow: 10px 10px 10px rgba(0,0,0,0.8);
   border:5px solid forestgreen;
   border-radius: 15px;
 }
-
-nav {
-  margin-bottom: 20px;
-  font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
-  color: black;
+#question {
+  font-family: 'Pinewood';
+  /* File path may need to change on deployed version */
+  src: "./PINEWOOD.TTF"; 
+  color:black;
 }
+
+.carousel {
+
+/* Have tried putting absolute here too and can't tell the difference */
+  position: relative;
+  max-height:275px;
+  max-width: 500px;
+  margin: 0 auto;
+  border: 5px solid forestgreen;
+  border-radius: 15px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.8);
+}
+
+.carouselImg {
+  height: 100%;
+  width: 100%;
+  max-height:268px;
+  max-width: 500px;
+  
+
+}
+
+  
+
+#weather {
+  background-color: white;
+  border: 5px solid forestgreen;
+  border-radius: 15px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.8);
+  
+}
+
+button {
+  border: 5px solid forestgreen;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.8);
+  
+}
+
 footer {
   margin-top: 20px;
   text-shadow: 5px 5px 5px rgba(0,0,0,0.8);
