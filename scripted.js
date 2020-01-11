@@ -7,6 +7,8 @@ $(document).ready(function () {
 
     //using open weather API to input city from search field
     button.addEventListener('click', function () {
+        $('#weather').empty();
+        $('#trails').empty();
         let cityInput = document.querySelector('#city')
         let city = cityInput.value
 
