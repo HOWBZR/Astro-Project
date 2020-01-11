@@ -67,7 +67,7 @@
                     <form class="form-group text-center">
 
                         <!-- Location question. -->
-                        <label for="citySearch">
+                        <label id="question" for="citySearch" class="text-center">
                             <h4>Where are you headed?</h4>
                         </label>
 
@@ -76,22 +76,17 @@
                             <div class='col-4 offset-4'>
 
                                 <!-- Dropdown for State  -->
-                                <select class='form-control col-6 offset-4' id='state'>
+                                <select class='form-control center' id='state'>
                                     <option id='state'>State</option>
                                 </select>
 
                                 <!-- Dropdown for City -->
-                                <select class='form-control col-6 offset-4' id='city'>
+                                <select class='form-control center' id='city'>
                                     <option>City</option>
                                 </select>
                             </div>
                         </div>
                         <br>
-
-                        <p>OR</p>
-
-                        <!-- Current Location check box -->
-                        <input type="checkbox" id="currentLocation">Use My Current Location</input><br><br>
 
                         <!-- Find the trail Button -->
                         <button id="myBtn">Find a Trail!</button>
@@ -132,7 +127,7 @@
                     </div>
                     <br></br>
 
-                    <!-- Button that returns to the home screen, but does not clear the input.
+                    <!-- Button that returns to the home screen, but (does not clear the input.)
                          If search ran again it will duplicate results -->
                     <button id="return">Search Again</button>
 

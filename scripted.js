@@ -7,6 +7,8 @@ $(document).ready(function () {
 
     //using open weather API to input city from search field
     button.addEventListener('click', function () {
+        $('#weather').empty();
+        $('#trails').empty();
         let cityInput = document.querySelector('#city')
         let city = cityInput.value
 
@@ -50,19 +52,18 @@ $(document).ready(function () {
 
                     // Sunset, << NOT >> in 12hr time.
                     let sunSet = '<div>';
-                    sunSet += "<p>" + "Sunset is at " + response.sunset + '</p>'
+                    sunSet += "<p>" + "Sunset is at " + moment(response.sunset, 'HH:mm').format('h:mm') + "pm" + '</p>'
                     sunSet += '</div>'
                     $('#weather').prepend(sunSet);
-
+                    console.log(moment(response.sunset, 'H:mm').format('h:mm'));
                 })
                 $.ajax({
                     url: coordURL,
                     method: 'GET'
                 }).then(function (response) {
-
                     // Sunrise, in 12hr time.
                     let sunRise = '<div>';
-                    sunRise += "<p>" + "Sunrise is at " + response.sunrise + '</p>'
+                    sunRise += "<p>" + "Sunrise is at " + moment(response.sunrise, 'H:mm').format('h:mm') + "am" + '</p>'
                     sunRise += '</div>'
                     $('#weather').prepend(sunRise);
 
@@ -90,10 +91,11 @@ $(document).ready(function () {
 
                         // The image being used in the carousel.
                         // would like to find a way to keep carousel box one size and adjust images.
-                        trailPopulator += "<img class='d-block w-100' src='" + currentTrail.imgMedium + "'>";
+                        trailPopulator += "<img class='d-block img-fluid carouselImg' src='" + currentTrail.imgMedium + "'>";
 
                         // the rest of the trail info populating over the image
                         // In the div class, changing it to 'weather' puts the info below the photo
+                        // In the div class,'carousel-caption' puts the trail info over the photo
                         trailPopulator += "<div class='carousel-caption'>";
                         trailPopulator += "<p>" + currentTrail.name + "</p>";
                         trailPopulator += "<p>" + currentTrail.location + "</p>";

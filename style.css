@@ -16,12 +16,18 @@ body {
   border:5px solid forestgreen;
   border-radius: 15px;
 }
+#question {
+  font-family: 'Pinewood';
+  /* File path may need to change on deployed version */
+  src: url("PINEWOOD.TTF"); 
+  color:black;
+}
 
 .carousel {
 
 /* Have tried putting absolute here too and can't tell the difference */
   position: relative;
-
+  max-height:275px;
   max-width: 500px;
   margin: 0 auto;
   border: 5px solid forestgreen;
@@ -29,6 +35,14 @@ body {
   box-shadow: 10px 10px 10px rgba(0,0,0,0.8);
 }
 
+.carouselImg {
+  height: 100%;
+  width: 100%;
+  max-height:268px;
+  max-width: 500px;
+  
+
+}
 /* 
 possible way to keep the container the same size
 
@@ -40,7 +54,7 @@ possible way to keep the container the same size
   /*height: 500px;*
 }
   */
-
+  
 
 #weather {
 
