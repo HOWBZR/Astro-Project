@@ -23,16 +23,16 @@ $(document).ready(function () {
 
             // Temperature 
             let temperature = Math.abs(response.main.temp - 273) * 1.8 + 32
-            let temp = temperature.toFixed(2)
+            let temp = temperature.toFixed(0);
             if (temp < 40) {
                 let tempDisplay = '<div>'
-                tempDisplay += '<p>' + 'Brrrrr! You better bring a jacket! It is going to be ' + temp + ' degrees' + '</p>'
+                tempDisplay += '<p>' + 'Brrrrr! You better bring a jacket! It is going to be ' + temp + ' &degF' + '</p>'
                 tempDisplay += '</div>'
                 $('#weather').prepend(tempDisplay);
             }
             else if (temp > 40) {
                 let tempDisplay = '<div>'
-                tempDisplay += '<p>' + ' Its a perfect day for a hike at only ' + temp + ' degrees' + '</p>'
+                tempDisplay += '<p>' + ' Its a perfect day for a hike at only ' + temp + ' &degF' + '</p>'
                 tempDisplay += '</div>'
                 $('#weather').prepend(tempDisplay);
             }
@@ -50,21 +50,20 @@ $(document).ready(function () {
                     method: 'GET'
                 }).then(function (response) {
 
-                    // Sunset, << NOT >> in 12hr time.
+                   
                     let sunSet = '<div>';
-                    sunSet += "<p>" + "Sunset is at " + response.sunset + '</p>'
+                    sunSet += "<p>" + "Sunset is at " + moment(response.sunset, 'HH:mm').format('h:mm') + "pm" + '</p>'
                     sunSet += '</div>'
                     $('#weather').prepend(sunSet);
-
+                    console.log(moment(response.sunset, 'H:mm').format('h:mm'));
                 })
                 $.ajax({
                     url: coordURL,
                     method: 'GET'
                 }).then(function (response) {
-
-                    // Sunrise, in 12hr time.
+                    
                     let sunRise = '<div>';
-                    sunRise += "<p>" + "Sunrise is at " + response.sunrise + '</p>'
+                    sunRise += "<p>" + "Sunrise is at " + moment(response.sunrise, 'H:mm').format('h:mm') + "am" + '</p>'
                     sunRise += '</div>'
                     $('#weather').prepend(sunRise);
 
@@ -92,10 +91,11 @@ $(document).ready(function () {
 
                         // The image being used in the carousel.
                         // would like to find a way to keep carousel box one size and adjust images.
-                        trailPopulator += "<img class='d-block w-100' src='" + currentTrail.imgMedium + "'>";
+                        trailPopulator += "<img class='d-block img-fluid carouselImg' src='" + currentTrail.imgMedium + "'>";
 
                         // the rest of the trail info populating over the image
                         // In the div class, changing it to 'weather' puts the info below the photo
+                        // In the div class,'carousel-caption' puts the trail info over the photo
                         trailPopulator += "<div class='carousel-caption'>";
                         trailPopulator += "<p>" + currentTrail.name + "</p>";
                         trailPopulator += "<p>" + currentTrail.location + "</p>";
