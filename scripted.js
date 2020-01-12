@@ -52,7 +52,7 @@ $(document).ready(function () {
 
                     // Sunset settings
                     let sunSet = '<div>';
-                    sunSet += "<p>" + " Sunset is at " + moment(response.sunset, 'HH:mm').format('h:mm') + "pm" + '</p>'
+                    sunSet += "<p>" + " Sunset is at " + moment(response.sunset, 'HH:mm').format('h:mm') + " PM" + '</p>'
                     sunSet += '</div>'
                     $('#weather').prepend(sunSet);
                     console.log(moment(response.sunset, 'H:mm').format('h:mm'));
@@ -64,7 +64,7 @@ $(document).ready(function () {
 
                     // Sunrise settings
                     let sunRise = '<div>';
-                    sunRise += "<p>" + "Sunrise is at " + moment(response.sunrise, 'H:mm').format('h:mm') + "am" + '</p>'
+                    sunRise += "<p>" + "Sunrise is at " + moment(response.sunrise, 'H:mm').format('h:mm') + " AM" + '</p>'
                     sunRise += '</div>'
                     $('#weather').prepend(sunRise);
 
@@ -98,11 +98,11 @@ $(document).ready(function () {
                         // In the div class, changing it to 'weather' puts the info below the photo
                         // In the div class,'carousel-caption' puts the trail info over the photo
                         // find way to make new line while concatonating, code everything on one <p>
-                        trailPopulator += "<div class='carousel-caption'>";
-                        trailPopulator += "<p>" + currentTrail.name + "</p>";
-                        trailPopulator += "<p>" + currentTrail.location + "</p>";
-                        trailPopulator += "<p>" + currentTrail.summary + "</p>";
-                        trailPopulator += "<p>" + "Rating: " + currentTrail.stars + " Stars" + "</p>";
+                        trailPopulator += "<div class='carousel-caption mb-4'>";
+                        trailPopulator += "<p class='caption'>" + currentTrail.name + "<br>"
+                         + currentTrail.location + "<br>"
+                          + currentTrail.summary + "<br>"
+                           + "Rating: " + currentTrail.stars + " Stars" + "</p>";
                         trailPopulator += "</div>"
 
                         $("#trails").append(trailPopulator);
