@@ -23,9 +23,9 @@ body {
   font-family: 'Hanalei Fill', serif;
   font-size: 68px;
   color:black;
-  
-  
 }
+
+
 
 .carousel {
 
@@ -78,5 +78,6 @@ button {
 
 footer {
   margin-top: 20px;
+  margin-bottom: 20px;
   text-shadow: 5px 5px 5px rgba(0,0,0,0.8);
 }
