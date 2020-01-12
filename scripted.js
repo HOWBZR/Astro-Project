@@ -50,9 +50,9 @@ $(document).ready(function () {
                     method: 'GET'
                 }).then(function (response) {
 
-                   
+                    // Sunset settings
                     let sunSet = '<div>';
-                    sunSet += "<p>" + "Sunset is at " + moment(response.sunset, 'HH:mm').format('h:mm') + "pm" + '</p>'
+                    sunSet += "<p>" + " Sunset is at " + moment(response.sunset, 'HH:mm').format('h:mm') + "pm" + '</p>'
                     sunSet += '</div>'
                     $('#weather').prepend(sunSet);
                     console.log(moment(response.sunset, 'H:mm').format('h:mm'));
@@ -61,7 +61,8 @@ $(document).ready(function () {
                     url: coordURL,
                     method: 'GET'
                 }).then(function (response) {
-                    
+
+                    // Sunrise settings
                     let sunRise = '<div>';
                     sunRise += "<p>" + "Sunrise is at " + moment(response.sunrise, 'H:mm').format('h:mm') + "am" + '</p>'
                     sunRise += '</div>'
@@ -96,6 +97,7 @@ $(document).ready(function () {
                         // the rest of the trail info populating over the image
                         // In the div class, changing it to 'weather' puts the info below the photo
                         // In the div class,'carousel-caption' puts the trail info over the photo
+                        // find way to make new line while concatonating, code everything on one <p>
                         trailPopulator += "<div class='carousel-caption'>";
                         trailPopulator += "<p>" + currentTrail.name + "</p>";
                         trailPopulator += "<p>" + currentTrail.location + "</p>";

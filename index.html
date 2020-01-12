@@ -39,6 +39,8 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
+    <!-- Google Fonts CDN -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hanalei Fill">
 
     <!-- Javascript  -->
     <script type="text/javascript" src="scripted.js"></script>
@@ -51,7 +53,7 @@
 <!-- Page Title -->
 <header>
     <div class="container-fluid text-center border-center">
-        <h1>Find a Hiking Trail Near You</h1>
+        <h1 id="h1" class="fas fa-hiking"> Find a Hiking Trail Near You</h1>
     </div>
 </header>
 
@@ -89,7 +91,7 @@
                         <br>
 
                         <!-- Find the trail Button -->
-                        <button id="myBtn">Find a Trail!</button>
+                        <button class="fas fa-tree" id="myBtn"> Find a Trail</button>
 
                     </form>
 
@@ -98,6 +100,9 @@
 
                 <!-- Alternate display for jumbotron that contains the carousel -->
                 <div id="results" class="jumbotron jumbotron-fluid text-center col-6 offset-3 d-none">
+
+                    <!-- Header with mountain Icon -->
+                    <h5 class="fas fa-mountain"> Trails Near You</h5>
 
                     <!-- This is the div where the carousel is. -->
                     <div id="trail-carousel" class="carousel slide" data-ride="carousel">
@@ -121,15 +126,18 @@
                     </div>
                     <br>
 
+                    <!-- Header with Sun Icon -->
+                    <h6 class="fas fa-sun"> Weather Conditions</h6>
+
                     <!-- This is the div I'm sending the weather info/strings and the sunrise/sunset -->
                     <div id="weather" class='col-4 offset-4'>
+
 
                     </div>
                     <br></br>
 
-                    <!-- Button that returns to the home screen, but (does not clear the input.)
-                         If search ran again it will duplicate results -->
-                    <button id="return">Search Again</button>
+                    <!-- Button that returns to the home screen with Tree Icon -->
+                    <button class="fas fa-tree" id="return"> Search Again</button>
 
                 </div>
             </div>
@@ -139,9 +147,9 @@
 
 
 
-    <!-- Footer with copyright thing -->
+    <!-- Footer with copyright thing and Tree Icon -->
     <footer>
-        <div class="container-fluid text-center border-center" style=color:white;>
+        <div class="container-fluid text-center border-center fas fa-tree" style=color:white;>
             &copy;Copyright 2020
     </footer>
 </body>
