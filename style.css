@@ -93,3 +93,8 @@ footer {
   margin-bottom: 20px;
   text-shadow: 5px 5px 5px rgba(0,0,0,0.8);
 }
+
+footer:hover {
+  font-size: larger;
+  font-weight: bold;
+}
