@@ -26,7 +26,7 @@ $(document).ready(function () {
             let temp = temperature.toFixed(0);
             if (temp < 40) {
                 let tempDisplay = '<div>'
-                tempDisplay += '<p>' + 'Brrrrr! You better bring a jacket! It is going to be ' + temp + ' &degF' + '</p>'
+                tempDisplay += '<p>' + 'Brrr! You better bring a jacket!' + "<br>" + 'It\'s going to be ' + temp + ' &degF' + '</p>'
                 tempDisplay += '</div>'
                 $('#weather').prepend(tempDisplay);
             }
