@@ -1,4 +1,5 @@
-h1 {
+#h1 {
+  margin-top: 30px;
   text-shadow: 5px 5px 5px rgba(0,0,0,0.8);
   color:white;
 }
@@ -18,16 +19,14 @@ body {
   border:5px solid forestgreen;
   border-radius: 15px;
 }
+
 #question {
-  font-family: 'Pinewood';
-  /* File path may need to change on deployed version */
-  src: "./PINEWOOD.TTF"; 
+  font-family: 'Hanalei Fill', serif;
+  font-size: 68px;
   color:black;
 }
 
 .carousel {
-
-/* Have tried putting absolute here too and can't tell the difference */
   position: relative;
   max-height:275px;
   max-width: 500px;
@@ -45,25 +44,51 @@ body {
   
 
 }
-
+ .carousel-caption p {
+  position: relative;
+  left: 0px;
+  bottom:0px;
+  top:40px;
+  opacity: 100%;
+  font-weight: bold;
+  text-shadow: 10px 10px 10px rgba(5,5,5,5);
+  font-family: 'Londrina Solid', serif;
   
+  }
+  
+  
+ 
+
+ h6{
+   color:white;
+   text-shadow: 5px 5px 5px rgba(0,0,0,0.8);
+ }
 
 #weather {
   background-color: white;
   border: 5px solid forestgreen;
   border-radius: 15px;
   box-shadow: 10px 10px 10px rgba(0,0,0,0.8);
+  font-family: 'Londrina Solid', serif;
+  font-weight: bolder;
+  
   
 }
 
 button {
   border: 5px solid forestgreen;
   border-radius: 15px;
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.8);
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.8);
   
 }
 
 footer {
   margin-top: 20px;
+  margin-bottom: 20px;
   text-shadow: 5px 5px 5px rgba(0,0,0,0.8);
+}
+
+footer:hover {
+  font-size: larger;
+  font-weight: bold;
 }

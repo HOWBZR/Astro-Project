@@ -39,6 +39,9 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
+    <!-- Google Fonts CDN -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hanalei Fill">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Londrina Solid">
 
     <!-- Javascript  -->
     <script type="text/javascript" src="scripted.js"></script>
@@ -48,10 +51,12 @@
 
 </head>
 
-<!-- Page Title -->
+
 <header>
     <div class="container-fluid text-center border-center">
-        <h1>Find a Hiking Trail Near You</h1>
+        
+        <!-- Hiking Icon and Header -->
+        <h1 id="h1" class="fas fa-hiking"> Find a Hiking Trail Near You</h1>
     </div>
 </header>
 
@@ -89,7 +94,7 @@
                         <br>
 
                         <!-- Find the trail Button -->
-                        <button id="myBtn">Find a Trail!</button>
+                        <button class="fas fa-tree" id="myBtn"> Find a Trail</button>
 
                     </form>
 
@@ -99,37 +104,55 @@
                 <!-- Alternate display for jumbotron that contains the carousel -->
                 <div id="results" class="jumbotron jumbotron-fluid text-center col-6 offset-3 d-none">
 
+                    <!-- Header with mountain Icon -->
+                    <h5 class="fas fa-mountain"> Trails Near You</h5>
+
+                    <!-- <br> -->
+
+                    <!-- Could insert instructions to freeze carousel -->
+
+                    <!-- <p class="fas fa-mouse-pointer"> (Hover Image To Pause)</p> -->
+
                     <!-- This is the div where the carousel is. -->
                     <div id="trail-carousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators my-4">
+                            <li data-target="#trail-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#trail-carousel" data-slide-to="1"></li>
+                            <li data-target="#trail-carousel" data-slide-to="2"></li>
+                            <li data-target="#trail-carousel" data-slide-to="3"></li>
+                            <li data-target="#trail-carousel" data-slide-to="4"></li>
+                          </ol>
                         <div id="trails" class="carousel-inner">
 
                             <!-- The trailPopulator is appending the currentTrail data inside of here -->
 
                         </div>
 
-                        <!-- Carousel control to move back a slide (doesn't work) -->
-                        <a class="carousel-control-prev" href="trail-carousel" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <!-- Working Carousel with clickable slides on the bottom  -->
+                        <a class="left carousel-control" href="#trail-carousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
                             <span class="sr-only">Previous</span>
-                        </a>
-
-                        <!-- Carousel control to move Forward a slide (doesn't work) -->
-                        <a class="carousel-control-next" href="trail-carousel" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          </a>
+                          <a class="right carousel-control" href="#trail-carousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
                             <span class="sr-only">Next</span>
-                        </a>
-                    </div>
+                          </a>
+                        </div>
+                        
                     <br>
+
+                    <!-- Header with Sun Icon -->
+                    <h6 class="fas fa-sun"> Weather Conditions</h6>
 
                     <!-- This is the div I'm sending the weather info/strings and the sunrise/sunset -->
                     <div id="weather" class='col-4 offset-4'>
 
+
                     </div>
                     <br></br>
 
-                    <!-- Button that returns to the home screen, but (does not clear the input.)
-                         If search ran again it will duplicate results -->
-                    <button id="return">Search Again</button>
+                    <!-- Button that returns to the home screen with Tree Icon -->
+                    <button class="fas fa-tree" id="return"> Search Again</button>
 
                 </div>
             </div>
@@ -139,9 +162,10 @@
 
 
 
-    <!-- Footer with copyright thing -->
+    <!-- Footer with copyright thing and Tree Icon -->
     <footer>
-        <div class="container-fluid text-center border-center" style=color:white;>
+        
+        <div class="container-fluid text-center border-center fas fa-tree" style=color:white;>
             &copy;Copyright 2020
     </footer>
 </body>
