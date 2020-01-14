@@ -97,13 +97,27 @@ $(document).ready(function () {
                         // the rest of the trail info populating over the image
                         // In the div class, changing it to 'weather' puts the info below the photo
                         trailPopulator += "<div class='carousel-caption'>";
-                        trailPopulator += "<p>" + currentTrail.name + "</p>";
-                        trailPopulator += "<p>" + currentTrail.location + "</p>";
-                        trailPopulator += "<p>" + currentTrail.summary + "</p>";
-                        trailPopulator += "<p>" + "Rating: " + currentTrail.stars + " Stars" + "</p>";
-                        trailPopulator += "</div>"
+                        // trailPopulator += "<p>" + currentTrail.name + "</p>";
+                        // trailPopulator += "<p>" + currentTrail.location + "</p>";
+                        // trailPopulator += "<p>" + currentTrail.summary + "</p>";
+                        // trailPopulator += "<p>" + "Rating: " + currentTrail.stars + " Stars" + "</p>";
+                        trailPopulator += "</div>";
 
                         $("#trails").append(trailPopulator);
+
+                    }else if {
+
+                        let slideClass2 = i === 0 ? "carousel-item active" : "carousel-item";
+                        let informationPopulator = "<div class='" + slideClass2 + "'>";
+
+                        infomrationPopulator += "<div>";
+                        infomrationPopulator += "<p>" + currentTrail.name + "</p>";
+                        infomrationPopulator += "<p>" + currentTrail.location + "</p>";
+                        infomrationPopulator += "<p>" + currentTrail.summary + "</p>";
+                        infomrationPopulator += "<p>" + "Rating: " + currentTrail.stars + " Stars" + "</p>";
+                        infomrationPopulator += "</div>";
+
+                        $("#information").append(informationPopulator);
 
                     }
 
