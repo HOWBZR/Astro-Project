@@ -19,17 +19,14 @@ body {
   border:5px solid forestgreen;
   border-radius: 15px;
 }
+
 #question {
   font-family: 'Hanalei Fill', serif;
   font-size: 68px;
   color:black;
 }
 
-
-
 .carousel {
-
-/* Have tried putting absolute here too and can't tell the difference */
   position: relative;
   max-height:275px;
   max-width: 500px;
@@ -48,7 +45,6 @@ body {
 
 }
  .carousel-caption p {
-  
   position: relative;
   left: 0px;
   bottom:0px;
@@ -69,7 +65,6 @@ body {
  }
 
 #weather {
-  
   background-color: white;
   border: 5px solid forestgreen;
   border-radius: 15px;
@@ -81,7 +76,6 @@ body {
 }
 
 button {
-  
   border: 5px solid forestgreen;
   border-radius: 15px;
   box-shadow: 10px 10px 10px rgba(0,0,0,0.8);

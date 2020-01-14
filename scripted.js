@@ -32,7 +32,7 @@ $(document).ready(function () {
             }
             else if (temp > 40) {
                 let tempDisplay = '<div>'
-                tempDisplay += '<p>' + ' Its a perfect day for a hike at only ' + temp + ' &degF' + '</p>'
+                tempDisplay += '<p>' + ' It\'s a perfect day for a hike at only ' + temp + ' &degF' + '</p>'
                 tempDisplay += '</div>'
                 $('#weather').prepend(tempDisplay);
             }
@@ -94,10 +94,8 @@ $(document).ready(function () {
                         // would like to find a way to keep carousel box one size and adjust images.
                         trailPopulator += "<img class='d-block img-fluid carouselImg' src='" + currentTrail.imgMedium + "'>";
 
-                        // the rest of the trail info populating over the image
-                        // In the div class, changing it to 'weather' puts the info below the photo
-                        // In the div class,'carousel-caption' puts the trail info over the photo
-                        // find way to make new line while concatonating, code everything on one <p>
+                        // the rest of the trail info 
+                        // concatonated code, everything in one <p>
                         trailPopulator += "<div class='carousel-caption mb-4'>";
                         trailPopulator += "<p class='caption'>" + currentTrail.name + "<br>"
                          + currentTrail.location + "<br>"
@@ -108,6 +106,7 @@ $(document).ready(function () {
                         $("#trails").append(trailPopulator);
 
                     }
+                    
 
                 }
                 // I'm not entirely sure if this is needed or not, but I'm too scared to mess with it.
