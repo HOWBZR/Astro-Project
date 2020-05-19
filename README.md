@@ -8,3 +8,14 @@ We then pivoted and found an REI Hiking Trail API. Together with the OpenWeather
 sunset and sunrise times, temperatures, and even images images. 
 
 This application allows the user to find trails based upon their State and City slections. The mentioned information above then populates into a carousel on the page. The user can then search again once they have found the required information. 
+
+
+Git Hub Pages URL: https://howbzr.github.io/Astro-Project/
+
+Landing Page:
+
+![Landing Page]()
+
+Trail Search:
+
+![Trail Search]()
