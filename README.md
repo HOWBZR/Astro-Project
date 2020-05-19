@@ -14,8 +14,8 @@ Git Hub Pages URL: https://howbzr.github.io/Astro-Project/
 
 Landing Page:
 
-![Landing Page]()
+![Landing Page](https://github.com/HOWBZR/Astro-Project/blob/master/images/Trail-Finder-Landing-Page.png)
 
 Trail Search:
 
-![Trail Search]()
+![Trail Search](https://github.com/HOWBZR/Astro-Project/blob/master/images/Trail-Finder-Example.png)
